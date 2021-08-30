@@ -1,0 +1,50 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%; /* 16 * 62.5 = 10px => 1rem */
+}
+body {
+  font: 1.6rem Helvetica, Arial;
+}
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem 1fr 5rem;
+  height: 100vh;
+}
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  background-color: #203040;
+  color: #ffff;
+  align-items: center;
+  padding: 0.5rem;
+}
+.brand:hover,
+.nav a:hover {
+  color: #f08040;
+}
+.nav a {
+  text-decoration: none;
+  padding: 0 0.5rem;
+  color: #ffffff;
+}
+.footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  background-color: #203040;
+  color: #ffff;
+  align-items: center;
+  padding: 0.5rem;
+}
