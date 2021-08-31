@@ -1,0 +1,23 @@
+{
+  "name": "amazon-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server frontend/src --verbose",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keshavavarma/Amazon-Clone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keshavavarma/Amazon-Clone/issues"
+  },
+  "homepage": "https://github.com/keshavavarma/Amazon-Clone#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

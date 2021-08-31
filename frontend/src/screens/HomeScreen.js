@@ -2,7 +2,6 @@ import Data from "../Data.js";
 const HomeScreen = {
   render: () => {
     const { products } = Data;
-    console.log(products.map((product) => product));
     return `
         <ul class='products'>
         ${products
