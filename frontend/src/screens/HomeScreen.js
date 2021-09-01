@@ -1,7 +1,15 @@
-import Data from "../Data.js";
 const HomeScreen = {
-  render: () => {
-    const { products } = Data;
+  render: async () => {
+    const response = await fetch("http://localhost:5500/api/products", {
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    if (!response || !response.ok) {
+      return `<div>Error in Getting Data</div>`;
+    }
+    const products = await response.json();
+
     return `
         <ul class='products'>
         ${products
