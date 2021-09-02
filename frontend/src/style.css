@@ -97,3 +97,13 @@ a:hover {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+/* Rating */
+
+.rating {
+  color: gold;
+  font-size: 1.8rem;
+}
+.rating span:last-child {
+  color: gray;
+  font-size: 1.4rem;
+}

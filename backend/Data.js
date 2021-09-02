@@ -13,7 +13,7 @@ module.exports = {
     },
     {
       _id: "2",
-      name: "Nike Full-Zip Hoodie Mens Workout Sweatshirt",
+      name: "Nike Full-Zip Hoodie Mens Workout Sweatshirt,Dark Blue",
       category: "Shirts",
       image: "images/product-2.jpeg",
       price: 70,

@@ -1,3 +1,4 @@
+import Rating from "../components/Rating.js";
 const HomeScreen = {
   render: async () => {
     const response = await fetch("http://localhost:5500/api/products", {
@@ -24,6 +25,12 @@ const HomeScreen = {
               </div>
               <div class="product-title">
                 <a href="/#/product/${product._id}">${product.name}</a>
+              </div>
+              <div class='product-rating'>
+              ${Rating.render({
+                value: product.rating,
+                text: product.numReviews + " reviews",
+              })}
               </div>
               <div class="product-brand">${product.brand}</div>
               <div class="product-price">$${product.price}</div>
