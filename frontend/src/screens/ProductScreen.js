@@ -3,6 +3,12 @@ import Rating from "../components/Rating.js";
 import { parseRequestUrl } from "../util.js";
 
 const ProductScreen = {
+  after_render: () => {
+    const request = parseRequestUrl();
+    document.getElementById("add-to-cart").addEventListener("click", () => {
+      document.location.hash = `/cart/${request.id}`;
+    });
+  },
   render: async () => {
     const request = parseRequestUrl();
     const product = await getProduct(request.id);
@@ -34,7 +40,7 @@ const ProductScreen = {
             ? '<p class="success">In-stock</p>'
             : '<p class="error">Out of Stock</p>'
         }</div>
-        <button class='add-to-cart ${
+        <button id="add-to-cart"class='add-to-cart ${
           product.countInStock > 0 ? "enabled" : "disabled"
         }' ${product.countInStock > 0 ? "" : "disabled"}>Add To Cart</button>
       </div>
