@@ -18,6 +18,12 @@ a {
 a:hover {
   color: #f08040;
 }
+.success {
+  color: #00c000;
+}
+.error {
+  color: #c00000;
+}
 .grid-container {
   display: grid;
   grid-template-areas:
@@ -106,4 +112,47 @@ a:hover {
 .rating span:last-child {
   color: gray;
   font-size: 1.4rem;
+}
+
+/* Product details */
+
+.back-link {
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.product-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  border: 2pxrem solid gray;
+  border-radius: 0.5rem;
+  background-color: whitesmoke;
+  padding: 1rem;
+}
+.product-status {
+  text-align: center;
+}
+.product-status p {
+  font-size: 1.8rem;
+}
+.add-to-cart {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: gold;
+  border: 0.2px solid grey;
+  border-radius: 0.5rem;
+}
+.disabled {
+  background-color: #a0a0a0;
+}
+.add-to-cart.enabled:hover {
+  background-color: goldenrod;
+  cursor: pointer;
 }
