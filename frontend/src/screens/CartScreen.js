@@ -1,23 +1,56 @@
 import { getProduct } from "../api.js";
 import { getCartItems, setCartItems } from "../localStorage.js";
-import { parseRequestUrl } from "../util.js";
+import { parseRequestUrl, rerender } from "../util.js";
 
-const addToCart = (item) => {
+const addToCart = (item, forceUpdate = false) => {
   let cartItems = getCartItems();
   const existItem = cartItems.find(
     (product) => product.product_id === item.product_id
   );
+
   if (existItem) {
-    cartItems = cartItems.map((product) =>
-      product.product_id === existItem.product_id ? item : product
-    ); // This is to update the cartItems with the updated quantity of already existing product if the value has been incremented/decremented.If we don't write this then if we increment/decrement the quantity of a particular product in the cart page and refresh it will not show the updated state.
+    if (forceUpdate) {
+      cartItems = cartItems.map((product) =>
+        product.product_id === existItem.product_id ? item : product
+      ); // This is to update the cartItems with the updated quantity of already existing product if the value has been incremented/decremented.If we don't write this then if we increment/decrement the quantity of a particular product in the cart page and refresh it will not show the updated state.
+    }
   } else {
     cartItems = [...cartItems, item];
   }
   setCartItems(cartItems);
+  if (forceUpdate) {
+    rerender(CartScreen);
+  }
 };
-
+const removeFromCart = (id) => {
+  setCartItems(getCartItems().filter((x) => x.product_id !== id));
+  // we have if condition here because, the render method first adds-to-cart the item with the id that is in the location.hash.
+  if (id === parseRequestUrl().id) {
+    document.location.hash = "/cart";
+  } else {
+    rerender(CartScreen);
+  }
+};
 const CartScreen = {
+  after_render: () => {
+    const qtySelects = document.getElementsByClassName("qty");
+    Array.from(qtySelects).forEach((qtySelect) => {
+      qtySelect.addEventListener("change", (e) => {
+        const items = getCartItems();
+        const item = items.find((x) => {
+          return x.product_id === qtySelect.id;
+        });
+        console.log({ ...item, qty: Number(e.target.value) });
+        addToCart({ ...item, qty: Number(e.target.value) }, true);
+      });
+    });
+    const deleteButtons = document.getElementsByClassName("delete-btn");
+    Array.from(deleteButtons).forEach((deleteBtn) => {
+      deleteBtn.addEventListener("click", () => {
+        removeFromCart(deleteBtn.id);
+      });
+    });
+  },
   render: async () => {
     const request = parseRequestUrl();
     if (request.id) {
@@ -56,7 +89,9 @@ const CartScreen = {
                             <p>${item.name}</p>
                             <div>
                                 <span>Qty :</span>
-                                <select name="qty" id="qty" class='qty'>
+                                <select name="qty" class='qty' id="${
+                                  item.product_id
+                                }">
                                     ${[...Array(item.count).keys()].map((x) =>
                                       item.qty === x + 1
                                         ? `<option selected value='${x + 1}'>${
@@ -67,7 +102,9 @@ const CartScreen = {
                                           }</option>`
                                     )}
                                 </select>
-                                <button class='delete-btn'><i class="fas fa-trash fa-lg" ></i></button>
+                                <button class='delete-btn' id="${
+                                  item.product_id
+                                }"><i class="fas fa-trash fa-lg" ></i></button>
                             </div>
                         </div>
                     </div> 
@@ -82,17 +119,10 @@ const CartScreen = {
         </div>
         <div class="subtotal-container">
             <div class="subtotal">
-                <h2>Subtotal (${
-                  (cartItems.reduce((a, c) => {
-                    return (a += c.qty);
-                  }),
-                  0)
-                }) : $${
-                (cartItems.reduce((a, c) => {
-                  return (a += c.price * c.qty);
-                }),
-                0)
-              }
+                <h2>Subtotal (${cartItems.reduce(
+                  (a, c) => (a += c.qty),
+                  0
+                )}) : $${cartItems.reduce((a, c) => (a += c.price * c.qty), 0)}
                 </h2>
                 <button class='proceed-to-cart'>Proceed to Checkout</button>
             </div>

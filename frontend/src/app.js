@@ -20,7 +20,7 @@ const router = async () => {
   const screen = routes[parseUrl] ? routes[parseUrl] : Error404Screen;
   const main = document.getElementById("main");
   main.innerHTML = await screen.render();
-  screen.after_render();
+  await screen.after_render();
 };
 
 window.addEventListener("load", router);
