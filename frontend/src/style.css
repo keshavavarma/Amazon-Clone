@@ -244,3 +244,50 @@ a:hover {
   background-color: goldenrod;
   cursor: pointer;
 }
+
+/* signin Form */
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.form-items {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 2rem 3rem;
+  border: 0.2rem solid gray;
+  background-color: #f0f0f0;
+  border-radius: 0.8rem;
+}
+.form-items li {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+li label {
+  font-size: 1.8rem;
+}
+li input {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  padding: 0.8rem;
+  border: 0.2rem solid grey;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+.signin-button {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: gold;
+  border: 0.2rem solid grey;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+.signin-button:hover {
+  background-color: goldenrod;
+  cursor: pointer;
+}
