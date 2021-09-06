@@ -257,6 +257,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   list-style-type: none;
+  width: 32rem;
   padding: 2rem 3rem;
   border: 0.2rem solid gray;
   background-color: #f0f0f0;
