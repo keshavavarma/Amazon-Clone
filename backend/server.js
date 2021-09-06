@@ -1,9 +1,22 @@
 const Data = require("./Data.js");
 const cors = require("cors");
 const express = require("express");
+const mongoose = require("mongoose");
+const config = require("./config.js");
+const userRouter = require("./routes/userRouter.js");
+
+mongoose
+  .connect(config.MONGODB_URL)
+  .then(() => {
+    console.log(mongoose.connection.readyState, "connected to mongodb.");
+  })
+  .catch((error) => {
+    console.log(error.reason);
+  });
 
 const app = express();
 app.use(cors());
+app.use("/api/users", userRouter);
 app.get("/api/products", (req, res) => {
   res.send(Data.products);
 });

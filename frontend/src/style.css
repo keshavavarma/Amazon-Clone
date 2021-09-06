@@ -231,7 +231,7 @@ a:hover {
   padding: 1rem;
   border-radius: 0.5rem;
 }
-.proceed-to-cart {
+.proceed-to-checkout {
   font-size: 1.8rem;
   margin-top: 1rem;
   padding: 1rem;
@@ -240,7 +240,7 @@ a:hover {
   border-radius: 0.5rem;
   width: 100%;
 }
-.proceed-to-cart:hover {
+.proceed-to-checkout:hover {
   background-color: goldenrod;
   cursor: pointer;
 }

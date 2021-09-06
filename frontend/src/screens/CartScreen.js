@@ -50,6 +50,9 @@ const CartScreen = {
         removeFromCart(deleteBtn.id);
       });
     });
+    document.getElementById("checkout-btn").addEventListener("click", () => {
+      document.location.hash = "/signIn";
+    });
   },
   render: async () => {
     const request = parseRequestUrl();
@@ -124,7 +127,7 @@ const CartScreen = {
                   0
                 )}) : $${cartItems.reduce((a, c) => (a += c.price * c.qty), 0)}
                 </h2>
-                <button class='proceed-to-cart'>Proceed to Checkout</button>
+                <button id ="checkout-btn"class='proceed-to-checkout'>Proceed to Checkout</button>
             </div>
         </div>
     </div>`
