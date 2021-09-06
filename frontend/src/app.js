@@ -1,3 +1,4 @@
+import Header from "./components/Header.js";
 import CartScreen from "./screens/CartScreen.js";
 import Error404Screen from "./screens/Error404Screen.js";
 import HomeScreen from "./screens/HomeScreen.js";
@@ -20,6 +21,9 @@ const router = async () => {
     (request.verb ? `/${request.verb}` : "");
   console.log(parseUrl);
   const screen = routes[parseUrl] ? routes[parseUrl] : Error404Screen;
+  const header = document.getElementById("header");
+  header.innerHTML = await Header.render();
+  await Header.after_render();
   const main = document.getElementById("main");
   main.innerHTML = await screen.render();
   await screen.after_render();

@@ -1,9 +1,34 @@
+import { signin } from "../api.js";
+import { getUserInfo, setUserInfo } from "../localStorage.js";
+
 const SignInScreen = {
-  after_render: () => {},
+  after_render: () => {
+    document
+      .getElementById("signin-form")
+      .addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const data = await signin({
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value,
+        });
+        if (data.error) {
+          alert(data.error);
+        } else {
+          console.log(data);
+          setUserInfo(data);
+
+          document.location.hash = "/";
+        }
+      });
+  },
   render: () => {
+    if (getUserInfo().name) {
+      console.log(getUserInfo().name);
+      document.location.hash = "/";
+    }
     return `
             <div class="form-container">
-                <form class="signin-form">
+                <form id="signin-form">
                     <ul class='form-items'>
                         <li>
                             <h2>Sign-In Form</h2>
