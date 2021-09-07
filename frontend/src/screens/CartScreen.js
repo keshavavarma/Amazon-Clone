@@ -1,6 +1,11 @@
 import { getProduct } from "../api.js";
 import { getCartItems, setCartItems } from "../localStorage.js";
-import { parseRequestUrl, rerender } from "../util.js";
+import {
+  hideLoading,
+  parseRequestUrl,
+  rerender,
+  showLoading,
+} from "../util.js";
 
 const addToCart = (item, forceUpdate = false) => {
   let cartItems = getCartItems();
@@ -55,6 +60,7 @@ const CartScreen = {
     });
   },
   render: async () => {
+    showLoading();
     const request = parseRequestUrl();
     if (request.id) {
       const product = await getProduct(request.id);
@@ -67,6 +73,7 @@ const CartScreen = {
         qty: 1,
       });
     }
+    hideLoading();
     const cartItems = getCartItems();
 
     return `

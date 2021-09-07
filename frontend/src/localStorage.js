@@ -30,9 +30,6 @@ export const setUserInfo = ({
 export const getUserInfo = () => {
   const userInfo = localStorage.getItem("userInfo")
     ? JSON.parse(localStorage.getItem("userInfo"))
-    : {
-        name: "",
-        email: "",
-      };
+    : {};
   return userInfo;
 };

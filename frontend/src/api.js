@@ -31,7 +31,8 @@ export const signin = async ({ email, password }) => {
       }),
     });
     if (!response || !response.ok) {
-      throw new Error("cannot post data");
+      console.log(response.statusText);
+      throw new Error(response.statusText + ", Invalid username or Password");
     }
     const data = await response.json();
     return data;
