@@ -1,7 +1,7 @@
 const express = require("express");
 const User = require("../models/user.js");
 const expressAsyncHandler = require("express-async-handler");
-const generateToken = require("../util.js");
+const util = require("../util.js");
 const userRouter = express.Router();
 
 userRouter.get(
@@ -37,7 +37,7 @@ userRouter.post(
         name: signInUser.name,
         email: signInUser.email,
         isAdmin: signInUser.isAdmin,
-        token: generateToken(signInUser),
+        token: util.generateToken(signInUser),
       });
     }
   })
@@ -60,7 +60,31 @@ userRouter.post(
         name: createdUser.name,
         email: createdUser.email,
         isAdmin: createdUser.isAdmin,
-        token: generateToken(createdUser),
+        token: util.generateToken(createdUser),
+      });
+    }
+  })
+);
+
+userRouter.put(
+  "/:id",
+  util.isAuth,
+  expressAsyncHandler(async (req, res) => {
+    console.log(req.params.id);
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      res.status(404).send({ message: "User Not Found" });
+    } else {
+      user.name = req.body.name || user.name;
+      user.email = req.body.email || user.email;
+      user.password = req.body.password || user.password;
+      const updadtedUser = await user.save();
+      res.send({
+        _id: updadtedUser._id,
+        name: updadtedUser.name,
+        email: updadtedUser.email,
+        isAdmin: updadtedUser.isAdmin,
+        token: util.generateToken(updadtedUser),
       });
     }
   })

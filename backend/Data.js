@@ -1,7 +1,7 @@
 module.exports = {
   products: [
     {
-      _id: "111111111111111111111111",
+      _id: "1",
       name: "Hiskywin Full Shirt Casual and Formal Wear, Navy Blue",
       category: "Shirts",
       image: "images/product-1.jpeg",

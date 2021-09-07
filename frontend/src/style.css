@@ -342,3 +342,16 @@ li input {
   background-color: goldenrod;
   cursor: pointer;
 }
+/* profile */
+.signout-button {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 0.2rem solid grey;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+.signout-button:hover {
+  background-color: #707070;
+  cursor: pointer;
+}

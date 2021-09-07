@@ -33,3 +33,7 @@ export const getUserInfo = () => {
     : {};
   return userInfo;
 };
+
+export const clearUserInfo = () => {
+  localStorage.removeItem("userInfo");
+};
