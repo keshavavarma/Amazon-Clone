@@ -328,3 +328,17 @@ li input {
   background-color: goldenrod;
   cursor: pointer;
 }
+/* Register */
+.register-button {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: gold;
+  border: 0.2rem solid grey;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+.register-button:hover {
+  background-color: goldenrod;
+  cursor: pointer;
+}
