@@ -372,3 +372,44 @@ li input {
   border-top-color: #f0a040;
   color: #f0a040;
 }
+/* Orders */
+
+.order {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.order h3 {
+  padding-bottom: 1rem;
+}
+.order-info {
+  flex: 3 1 60rem;
+}
+.order-info > div {
+  border: 0.1rem solid #c0c0c0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  max-width: 90rem;
+}
+.order-action {
+  flex: 1 1 20rem;
+  border: 0.1rem solid #c0c0c0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  /* margin-top: 1rem; */
+}
+.order-action > ul {
+  list-style: none;
+}
+.order-action li {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+.order-action .total {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #c04000;
+}
