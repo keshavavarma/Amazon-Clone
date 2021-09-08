@@ -95,3 +95,26 @@ export const update = async ({ name, email, password }) => {
     return { error: err.message };
   }
 };
+
+export const createOrder = async (order) => {
+  try {
+    const { token } = getUserInfo();
+    const response = await fetch(apiUrl + "/api/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(order),
+    });
+    if (!response || !response.ok) {
+      console.log(response.statusText);
+      throw new Error(response.statusText);
+    }
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err.message);
+    return { error: err.message };
+  }
+};

@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./config.js");
 const userRouter = require("./routes/userRouter.js");
+const orderRouter = require("./routes/orderRouter.js");
 
 mongoose
   .connect(config.MONGODB_URL)
@@ -18,6 +19,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/users", userRouter);
+app.use("/api/orders", orderRouter);
 app.get("/api/products", (req, res) => {
   res.send(Data.products);
 });

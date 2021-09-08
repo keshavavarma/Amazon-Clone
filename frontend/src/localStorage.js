@@ -79,3 +79,7 @@ export const setPayment = ({ paymentMethod = "paypal" }) => {
     })
   );
 };
+
+export const clearCart = () => {
+  localStorage.removeItem("cartItems");
+};
