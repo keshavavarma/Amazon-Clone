@@ -140,6 +140,27 @@ export const getOrder = async (id) => {
   }
 };
 
+export const getMyOrders = async () => {
+  try {
+    const { token } = getUserInfo();
+    const response = await fetch(apiUrl + `/api/orders/mine`, {
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response || !response.ok) {
+      console.log(response.statusText);
+      throw new Error(response.statusText);
+    }
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err.message);
+    return { error: err.message };
+  }
+};
+
 export const getPaypalClientId = async () => {
   try {
     const response = await fetch(apiUrl + "/api/paypal/clientId", {

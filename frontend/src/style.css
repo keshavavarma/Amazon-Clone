@@ -357,6 +357,35 @@ li input {
   background-color: #707070;
   cursor: pointer;
 }
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.profile-info {
+  flex: 1 1 20rem;
+}
+.profile-orders {
+  flex: 3 1 60rem;
+  margin-left: 1rem;
+}
+.profile-orders h2 {
+  margin-bottom: 2rem;
+}
+table {
+  width: 100%;
+}
+th {
+  text-align: left;
+}
+tbody > tr:nth-child(odd) {
+  background-color: gainsboro;
+}
+td {
+  padding: 0.5rem;
+}
 /* Checkout-steps */
 
 .checkout-steps {
