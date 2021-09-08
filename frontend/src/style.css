@@ -309,11 +309,10 @@ li label {
 }
 li input {
   font-size: 1.8rem;
-  margin-top: 1rem;
   padding: 0.8rem;
   border: 0.2rem solid grey;
   border-radius: 0.5rem;
-  width: 100%;
+  /* width: 100%; */
 }
 .signin-button {
   font-size: 1.8rem;
@@ -354,4 +353,22 @@ li input {
 .signout-button:hover {
   background-color: #707070;
   cursor: pointer;
+}
+/* Checkout-steps */
+
+.checkout-steps {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem auto;
+  width: 35rem;
+}
+.checkout-steps > div {
+  border-top: 0.3rem solid #c0c0c0;
+  color: #c0c0c0;
+  flex: 1 1;
+  padding-top: 1rem;
+}
+.checkout-steps > div.active {
+  border-top-color: #f0a040;
+  color: #f0a040;
 }

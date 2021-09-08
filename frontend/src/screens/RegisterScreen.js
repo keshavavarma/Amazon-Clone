@@ -1,6 +1,6 @@
 import { register } from "../api.js";
 import { getUserInfo, setUserInfo } from "../localStorage.js";
-import { hideLoading, showLoading, showMessage } from "../util.js";
+import { hideLoading, redirect, showLoading, showMessage } from "../util.js";
 
 const RegisterScreen = {
   after_render: () => {
@@ -20,15 +20,13 @@ const RegisterScreen = {
         } else {
           console.log(data);
           setUserInfo(data);
-
-          document.location.hash = "/";
+          redirect();
         }
       });
   },
   render: () => {
     if (getUserInfo().name) {
-      console.log(getUserInfo().name);
-      document.location.hash = "/";
+      redirect();
     }
     return `
             <div class="form-container">
@@ -50,7 +48,7 @@ const RegisterScreen = {
                             <input type='password' name='password' id='password'>
                         </li> 
                         <li>
-                            <button class="register-button">Register</button>
+                            <button type="submit" class="register-button">Register</button>
                         </li>
                         <li>
                             <div>
