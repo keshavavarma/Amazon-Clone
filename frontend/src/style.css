@@ -18,6 +18,9 @@ a {
 a:hover {
   color: #f08040;
 }
+.fw {
+  width: 100%;
+}
 .success {
   color: #00c000;
 }

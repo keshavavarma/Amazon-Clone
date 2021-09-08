@@ -36,6 +36,8 @@ export const getUserInfo = () => {
 
 export const clearUserInfo = () => {
   localStorage.removeItem("userInfo");
+  localStorage.removeItem("shippingInfo");
+  localStorage.removeItem("cartItems");
 };
 
 export const getShipping = () => {

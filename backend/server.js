@@ -20,6 +20,9 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
+app.get("/api/paypal/clientId", (req, res) => {
+  res.send({ clientId: config.PAYPAL_CLIENT_ID });
+});
 app.get("/api/products", (req, res) => {
   res.send(Data.products);
 });
