@@ -393,6 +393,9 @@ li input {
   margin: 1rem;
   max-width: 90rem;
 }
+.order-info > div > div {
+  margin-bottom: 1rem;
+}
 .order-action {
   flex: 1 1 20rem;
   border: 0.1rem solid #c0c0c0;

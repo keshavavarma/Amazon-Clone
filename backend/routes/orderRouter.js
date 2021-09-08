@@ -4,7 +4,18 @@ const Order = require("../models/Order.js");
 const util = require("../util.js");
 
 const orderRouter = express.Router();
-
+orderRouter.get(
+  "/:id",
+  util.isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id);
+    if (order) {
+      res.send(order);
+    } else {
+      res.status(404).send({ message: "Order not found" });
+    }
+  })
+);
 orderRouter.post(
   "/",
   util.isAuth,
@@ -26,7 +37,7 @@ orderRouter.post(
     } else {
       res
         .status(201)
-        .send({ message: "New Order Created", data: createdOrder });
+        .send({ message: "New Order Created", order: createdOrder });
     }
   })
 );

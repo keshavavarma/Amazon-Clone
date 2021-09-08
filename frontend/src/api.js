@@ -118,3 +118,24 @@ export const createOrder = async (order) => {
     return { error: err.message };
   }
 };
+
+export const getOrder = async (id) => {
+  try {
+    const { token } = getUserInfo();
+    const response = await fetch(apiUrl + `/api/orders/${id}`, {
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response || !response.ok) {
+      console.log(response.statusText);
+      throw new Error(response.statusText);
+    }
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err.message);
+    return { error: err.message };
+  }
+};
