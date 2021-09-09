@@ -14,7 +14,6 @@ module.exports = {
       config.JWT_SECRET
     );
   },
-
   isAuth: (req, res, next) => {
     const bearerToken = req.headers.authorization;
     if (!bearerToken) {
