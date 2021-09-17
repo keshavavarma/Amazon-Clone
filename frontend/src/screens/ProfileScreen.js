@@ -66,7 +66,7 @@ const ProfileScreen = {
                   </form>
                 </div>
               </div>
-              <div class="profile-orders">
+              <div class="profile-orders expand">
               <h2>Order History</h2>
                 <table>
                   <thead>
@@ -93,6 +93,31 @@ const ProfileScreen = {
                         <td>${order.paidAt || "NO"}</td>
                         <td>${order.deliveredAt || "NO"}</td>
                         <td><a href='/#/order/${order._id}'>Details</a></td>
+                      </tr>
+                    `
+                          )
+                          .join("\n")
+                  }
+                  </tbody>
+                </table>
+              </div>
+              <div class="profile-orders reduce">
+              <h2>Order History</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ORDER ID</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  ${
+                    orders.length === 0
+                      ? `<tr><td colspan='6'>No Orders Found</td></tr>`
+                      : orders
+                          .map(
+                            (order) => `
+                      <tr>
+                        <td><a href='/#/order/${order._id}'>${order._id}</a></td>
                       </tr>
                     `
                           )

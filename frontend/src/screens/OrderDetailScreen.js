@@ -20,6 +20,7 @@ const addPaypalSdk = async (totalPrice) => {
   } else {
     handlePayment(clientId, totalPrice);
   }
+  hideLoading();
 };
 
 const handlePayment = (clientId, totalPrice) => {

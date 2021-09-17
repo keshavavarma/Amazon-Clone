@@ -19,7 +19,7 @@ const ShippingScreen = {
           postalCode: document.getElementById("postalCode").value,
           city: document.getElementById("city").value,
         });
-        document.location.hash = "/payment";
+        document.location.hash = "/placeorder";
       });
   },
   render: () => {
