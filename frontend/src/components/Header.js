@@ -4,7 +4,7 @@ const Header = {
   render: () => {
     const { name } = getUserInfo();
     return `
-        <div class="brand">
+      <div class="brand">
         <a href="/#/"><h2>Amazon</h2></a>
       </div>
       <nav class="nav">

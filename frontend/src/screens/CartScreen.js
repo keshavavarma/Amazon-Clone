@@ -77,19 +77,20 @@ const CartScreen = {
     const cartItems = getCartItems();
 
     return `
-        ${
-          cartItems.length === 0
-            ? `<div>No Items in Cart</div>`
-            : `<div class="cart">
+    
+      <div class="cart">
         <div class="cart-items">
             <ul class='cart-list'>
                 <li>
                     <h3>Shopping Cart</h3>
                     <h3>Price</h3>
                 </li>
-                ${cartItems
-                  .map(
-                    (item) => `
+                ${
+                  cartItems.length === 0
+                    ? `<h3>No Items in Cart</h3>`
+                    : cartItems
+                        .map(
+                          (item) => `
                 <li class='cart-item-container'>
                     <div class='cart-item'>
                         <div class="product-image-sm">
@@ -123,10 +124,15 @@ const CartScreen = {
                     </div>
                  </li>
                 `
-                  )
-                  .join("\n")}                
+                        )
+                        .join("\n")
+                }                
             </ul>
         </div>
+        ${
+          cartItems.length === 0
+            ? ""
+            : `
         <div class="subtotal-container">
             <div class="subtotal">
                 <h2>Subtotal (${cartItems.reduce(
@@ -137,10 +143,10 @@ const CartScreen = {
                 <button id ="checkout-btn"class='proceed-to-checkout'>Proceed to Checkout</button>
             </div>
         </div>
-    </div>`
+        `
         }
         
-    `;
+    </div>`;
   },
 };
 
