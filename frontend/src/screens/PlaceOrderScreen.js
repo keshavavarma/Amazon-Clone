@@ -70,7 +70,6 @@ const PlaceOrderScreen = {
           step1: true,
           step2: true,
           step3: true,
-          step4: true,
         })}
         <div class='order'>
             <div class="order-info">

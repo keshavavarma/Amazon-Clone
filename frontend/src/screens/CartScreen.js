@@ -87,7 +87,7 @@ const CartScreen = {
                 </li>
                 ${
                   cartItems.length === 0
-                    ? `<h3>No Items in Cart</h3>`
+                    ? `<h3 style="color:red;text-align:center">No Items in Cart</h3>`
                     : cartItems
                         .map(
                           (item) => `
