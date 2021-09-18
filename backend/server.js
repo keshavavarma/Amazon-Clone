@@ -46,14 +46,11 @@ app.get("/api/products/:id", (req, res) => {
 
 // serve static assets in production
 
-if (process.env.NODE_ENV === "production") {
-  //set static folder
-  app.use(express.static(__dirname, "../frontend/dist"));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../frontend/dist", "index.html"));
-  });
-}
+//set static folder
+app.use(express.static(path.join(__dirname, "/../frontend")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/../frontend/index.html"));
+});
 
 const PORT = process.env.PORT || 5500;
 

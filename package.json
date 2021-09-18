@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
-    "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend"
+    "start": "nodemon --watch backend --exec babel-node backend/server.js",
+    "build": "rm -rf dist && cd frontend && npm install && npm run build",
+    "serve": "node dist/server.js",
+    "heroku-prebuild": "cd frontend && npm install --dev"
   },
   "repository": {
     "type": "git",
@@ -33,5 +32,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.4",
     "webpack": "^5.53.0"
+  },
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
   }
 }
