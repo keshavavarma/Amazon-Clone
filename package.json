@@ -6,11 +6,9 @@
   "scripts": {
     "build": "cd frontend && npm run build",
     "install-client": "cd frontend && npm install",
-    "start": "concurrently \"npm run server\" \"npm run frontend\"",
     "server": "nodemon backend/server.js ",
     "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
-    "heroku-postbuild": "npm run install-client && npm run build"
+    "dev": "concurrently \"npm run server\" \"npm run frontend\""
   },
   "repository": {
     "type": "git",
