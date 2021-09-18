@@ -48,10 +48,10 @@ app.get("/api/products/:id", (req, res) => {
 
 if (process.env.NODE_ENV === "production") {
   //set static folder
-  app.use(express.static("frontend"));
+  app.use(express.static(__dirname, "../frontend/dist"));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../frontend", "index.html"));
+    res.sendFile(path.resolve(__dirname, "../frontend/dist", "index.html"));
   });
 }
 
