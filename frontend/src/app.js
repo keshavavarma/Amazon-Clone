@@ -2,7 +2,6 @@ import Header from "./components/Header.js";
 import CartScreen from "./screens/CartScreen.js";
 import Error404Screen from "./screens/Error404Screen.js";
 import HomeScreen from "./screens/HomeScreen.js";
-import PaymentScreen from "./screens/PaymentScreen.js";
 import ProductScreen from "./screens/ProductScreen.js";
 import ProfileScreen from "./screens/ProfileScreen.js";
 import RegisterScreen from "./screens/RegisterScreen.js";
@@ -20,19 +19,16 @@ const routes = {
   "/register": RegisterScreen,
   "/profile": ProfileScreen,
   "/shipping": ShippingScreen,
-  "/payment": PaymentScreen,
   "/placeorder": PlaceOrderScreen,
   "/order/:id": OrderDetailScreen,
 };
 const router = async () => {
   showLoading();
   const request = parseRequestUrl();
-  //console.log(request.resource ? true : false);
   const parseUrl =
     (request.resource ? `/${request.resource}` : "/") +
     (request.id ? "/:id" : "") +
     (request.verb ? `/${request.verb}` : "");
-  console.log(parseUrl);
   const screen = routes[parseUrl] ? routes[parseUrl] : Error404Screen;
   const header = document.getElementById("header");
   header.innerHTML = await Header.render();

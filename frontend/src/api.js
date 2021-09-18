@@ -32,7 +32,6 @@ export const signin = async ({ email, password }) => {
       }),
     });
     if (!response || !response.ok) {
-      console.log(response.statusText);
       throw new Error(response.statusText + ", Invalid username or Password");
     }
     const data = await response.json();
@@ -57,7 +56,6 @@ export const register = async ({ name, email, password }) => {
       }),
     });
     if (!response || !response.ok) {
-      console.log(response.statusText);
       throw new Error(response.statusText);
     }
     const data = await response.json();
@@ -71,7 +69,6 @@ export const register = async ({ name, email, password }) => {
 export const update = async ({ name, email, password }) => {
   try {
     const { _id, token } = getUserInfo();
-    console.log(_id);
     const response = await fetch(apiUrl + "/api/users/" + _id, {
       method: "PUT",
       headers: {
@@ -85,7 +82,6 @@ export const update = async ({ name, email, password }) => {
       }),
     });
     if (!response || !response.ok) {
-      console.log(response.statusText);
       throw new Error(response.statusText);
     }
     const data = await response.json();
@@ -108,7 +104,6 @@ export const createOrder = async (order) => {
       body: JSON.stringify(order),
     });
     if (!response || !response.ok) {
-      console.log(response.statusText);
       throw new Error(response.statusText);
     }
     const data = await response.json();
@@ -129,7 +124,6 @@ export const getOrder = async (id) => {
       },
     });
     if (!response || !response.ok) {
-      console.log(response.statusText);
       throw new Error(response.statusText);
     }
     const data = await response.json();
@@ -150,7 +144,6 @@ export const getMyOrders = async () => {
       },
     });
     if (!response || !response.ok) {
-      console.log(response.statusText);
       throw new Error(response.statusText);
     }
     const data = await response.json();
@@ -169,7 +162,6 @@ export const getPaypalClientId = async () => {
       },
     });
     if (!response || !response.ok) {
-      console.log(response.statusText);
       throw new Error(response.statusText);
     }
     const data = await response.json();
@@ -192,7 +184,6 @@ export const payOrder = async (orderId, paymentResult) => {
       body: JSON.stringify(paymentResult),
     });
     if (!response || !response.ok) {
-      console.log(response.statusText);
       throw new Error(response.statusText);
     }
     const data = await response.json();

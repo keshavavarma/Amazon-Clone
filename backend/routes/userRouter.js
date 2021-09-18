@@ -70,7 +70,6 @@ userRouter.put(
   "/:id",
   util.isAuth,
   expressAsyncHandler(async (req, res) => {
-    console.log(req.params.id);
     const user = await User.findById(req.params.id);
     if (!user) {
       res.status(404).send({ message: "User Not Found" });

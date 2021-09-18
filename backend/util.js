@@ -20,12 +20,10 @@ module.exports = {
       res.status(401).send("Token is not supplied");
     } else {
       const token = bearerToken.slice(7, bearerToken.length);
-      console.log(token);
       jwt.verify(token, config.JWT_SECRET, (err, data) => {
         if (err) {
           res.status(401).send({ message: "Invalid Token" });
         } else {
-          console.log(data);
           req.user = data;
           next();
         }

@@ -9,7 +9,11 @@ const orderRouter = require("./routes/orderRouter.js");
 mongoose
   .connect(config.MONGODB_URL)
   .then(() => {
-    console.log(mongoose.connection.readyState, "connected to mongodb.");
+    console.log(
+      "readyState:",
+      mongoose.connection.readyState,
+      ",connected to mongodb."
+    );
   })
   .catch((error) => {
     console.log(error.reason);

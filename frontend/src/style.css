@@ -389,7 +389,7 @@ li input {
   flex: 1 1 20rem;
 }
 .profile-orders {
-  flex: 3 1 60rem;
+  flex: 3 1;
   margin-left: 1rem;
 }
 .reduce {
@@ -415,7 +415,6 @@ td {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     margin-top: 2rem;
   }
   .expand {

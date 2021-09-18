@@ -45,7 +45,6 @@ const CartScreen = {
         const item = items.find((x) => {
           return x.product_id === qtySelect.id;
         });
-        console.log({ ...item, qty: Number(e.target.value) });
         addToCart({ ...item, qty: Number(e.target.value) }, true);
       });
     });
@@ -64,14 +63,18 @@ const CartScreen = {
     const request = parseRequestUrl();
     if (request.id) {
       const product = await getProduct(request.id);
-      addToCart({
-        product_id: product._id,
-        name: product.name,
-        image: product.image,
-        price: product.price,
-        count: product.countInStock,
-        qty: 1,
-      });
+      if (!product._id) {
+        console.log("Invalid product ID");
+      } else {
+        addToCart({
+          product_id: product._id,
+          name: product.name,
+          image: product.image,
+          price: product.price,
+          count: product.countInStock,
+          qty: 1,
+        });
+      }
     }
     hideLoading();
     const cartItems = getCartItems();

@@ -22,7 +22,6 @@ const ProfileScreen = {
         if (data.error) {
           showMessage(data.error);
         } else {
-          console.log(data);
           setUserInfo(data);
 
           document.location.hash = "/";
