@@ -17,5 +17,5 @@
     "webpack-dev-server": "^4.2.1"
   },
   "dependencies": {},
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5500"
 }
