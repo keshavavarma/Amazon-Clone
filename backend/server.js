@@ -25,6 +25,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
+app.use(express.static("../frontend/dist"));
 app.use((err, req, res, next) => {
   const status = err.name && err.name === "ValidationError" ? 400 : 500;
   res.status(status).send({ message: err.message });
@@ -44,15 +45,9 @@ app.get("/api/products/:id", (req, res) => {
   }
 });
 
-// Serve static assets in production
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  app.use(express.static("frontend/build"));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-  });
-}
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+// });
 
 const PORT = process.env.PORT || 5500;
 
