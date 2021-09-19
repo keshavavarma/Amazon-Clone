@@ -3,14 +3,11 @@ import { hideLoading, showLoading } from "../util.js";
 const HomeScreen = {
   render: async () => {
     showLoading();
-    const response = await fetch(
-      "https://serene-earth-72547.herokuapp.com/api/products",
-      {
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-    );
+    const response = await fetch("/api/products", {
+      headers: {
+        "content-type": "application/json",
+      },
+    });
     hideLoading();
     if (!response || !response.ok) {
       return `<div>Error in Getting Data</div>`;
