@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch backend --exec babel-node backend/server.js",
-    "build": "rm -rf dist && cd frontend && npm install && npm run build",
-    "serve": "node dist/server.js",
-    "heroku-prebuild": "cd frontend && npm install --dev"
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\""
   },
   "repository": {
     "type": "git",

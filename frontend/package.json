@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "live-server dist",
-    "build": "webpack --mode=production --output ./main.js",
+    "start": "live-server",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -16,5 +16,6 @@
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.2.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "proxy": "http://localhost:5000"
 }
